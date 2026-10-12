@@ -1,0 +1,27 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: backend/requirements-dev.txt
+      - name: Install
+        run: pip install -r backend/requirements-dev.txt
+      - name: Lint
+        run: ruff check backend tools
+      - name: Unit tests with coverage
+        working-directory: backend
+        env:
+          # The tests never call a real LLM: AI results come from the committed data/cache.
+          ANTHROPIC_API_KEY: ci-dummy-key
+          LLM_MODEL: anthropic:claude-sonnet-5-5
+        run: pytest -q --cov=app --cov-report=term-missing --cov-fail-under=95

@@ -1,0 +1,20 @@
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+src = ["backend", "backend/tests", "tools"]
+extend-exclude = [".venv", "backend/runtime"]
+
+[tool.ruff.lint]
+# E/W pycodestyle, F pyflakes, I isort, B bugbear (likely bugs), UP pyupgrade
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.ruff.lint.per-file-ignores]
+# Test fixtures reproduce long verbatim quotes from the policy documents.
+"backend/tests/*" = ["E501"]
+
+[tool.ruff.lint.flake8-bugbear]
+# FastAPI's File(...) default is the framework's idiom for upload parameters.
+extend-immutable-calls = ["fastapi.File"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]

@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+python-multipart
+pydantic>=2
+pydantic-ai
+python-dotenv
+pyyaml
+pymupdf
+pillow
+imagehash
+sqlmodel
+pytest
+httpx

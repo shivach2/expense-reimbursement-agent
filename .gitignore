@@ -1,0 +1,31 @@
+# secrets
+.env
+.env.*
+!.env.example
+
+# python
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# node
+node_modules/
+frontend/dist/
+
+# local data
+*.sqlite
+*.db
+backend/uploads/
+
+# os / editor
+.DS_Store
+.idea/
+.vscode/
+
+# runtime state (uploads, finance DB, runtime policy copy)
+backend/runtime/
+
+submission/

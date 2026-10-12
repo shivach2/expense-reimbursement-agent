@@ -1,0 +1,16 @@
+# docker compose up --build        (needs a .env file with your LLM key; see .env.example)
+services:
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    environment:
+      # Pins "today" for the 60-day receipt-age rule so the demo data stays valid. Leave unset for the real date.
+      CLAIM_TODAY: ${CLAIM_TODAY:-2026-10-12}
+    volumes:
+      - runtime:/app/backend/runtime   # uploads, finance SQLite, runtime policy copy survive restarts
+
+volumes:
+  runtime:
