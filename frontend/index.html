@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expense &amp; Reimbursement Agent</title>
+<style>
+  :root { --bg:#f5f6f8; --card:#fff; --ink:#1c2330; --mute:#667085; --line:#e4e7ec; --brand:#1d4ed8; --brand-ink:#fff;
+          --ok:#067647; --ok-bg:#ecfdf3; --warn:#b54708; --warn-bg:#fffaeb; --bad:#b42318; --bad-bg:#fef3f2; --grey-bg:#f2f4f7; }
+  * { box-sizing:border-box; }
+  body { margin:0; font:14px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif; color:var(--ink); background:var(--bg); }
+  header { background:var(--card); border-bottom:1px solid var(--line); padding:10px 20px; display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+  header h1 { font-size:16px; margin:0; }
+  .who { color:var(--mute); font-size:13px; }
+  nav { margin-left:auto; display:flex; gap:4px; }
+  nav button { border:0; background:none; padding:7px 14px; border-radius:8px; font:inherit; cursor:pointer; color:var(--mute); }
+  nav button[aria-selected=true] { background:var(--grey-bg); color:var(--ink); font-weight:600; }
+  main { display:grid; grid-template-columns:minmax(300px,380px) 1fr; gap:16px; padding:16px 20px; max-width:1500px; margin:0 auto; }
+  @media (max-width:900px) { main { grid-template-columns:1fr; } }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px; }
+  .card h2 { font-size:14px; margin:0 0 10px; }
+  button.primary { background:var(--brand); color:var(--brand-ink); border:0; padding:8px 14px; border-radius:8px; font:inherit; font-weight:600; cursor:pointer; }
+  button.primary:disabled { background:#98a2b3; cursor:not-allowed; }
+  button.ghost { background:#fff; border:1px solid var(--line); padding:7px 12px; border-radius:8px; font:inherit; cursor:pointer; }
+  input,select,textarea { font:inherit; padding:7px 9px; border:1px solid #cfd4dc; border-radius:8px; max-width:100%; }
+  :focus-visible { outline:2px solid var(--brand); outline-offset:1px; }
+  /* chat */
+  #chat { display:flex; flex-direction:column; height:calc(100vh - 100px); position:sticky; top:12px; }
+  #msgs { flex:1; overflow:auto; display:flex; flex-direction:column; gap:8px; padding:4px 2px; }
+  .bub { padding:8px 11px; border-radius:12px; max-width:92%; white-space:pre-wrap; }
+  .bub.user { background:var(--brand); color:#fff; align-self:flex-end; border-bottom-right-radius:3px; }
+  .bub.bot { background:var(--grey-bg); align-self:flex-start; border-bottom-left-radius:3px; }
+  .chips { display:flex; gap:6px; flex-wrap:wrap; margin:8px 0; }
+  .chips button { border:1px solid var(--line); background:#fff; border-radius:999px; padding:4px 10px; font-size:12px; cursor:pointer; }
+  #chatform { display:flex; gap:6px; }
+  #chatform input { flex:1; }
+  /* claim */
+  .drop { border:2px dashed #b9c0cc; border-radius:12px; padding:18px; text-align:center; color:var(--mute); background:#fcfcfd; }
+  .drop.over { border-color:var(--brand); background:#eff4ff; }
+  .row { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+  .grow { flex:1; }
+  .bar { height:8px; background:var(--grey-bg); border-radius:99px; overflow:hidden; }
+  .bar > i { display:block; height:100%; background:var(--brand); transition:width .3s; }
+  .chip { display:inline-block; padding:1px 9px; border-radius:99px; font-size:12px; font-weight:600; }
+  .chip.complete,.chip.ready { background:var(--ok-bg); color:var(--ok); }
+  .chip.missing_info,.chip.questionable,.chip.needs_input { background:var(--warn-bg); color:var(--warn); }
+  .chip.ineligible,.chip.blocked { background:var(--bad-bg); color:var(--bad); }
+  .chip.duplicate { background:var(--grey-bg); color:var(--mute); }
+  .chip.cat { background:#eef2ff; color:#3538cd; font-weight:500; }
+  .kpis { display:flex; gap:22px; flex-wrap:wrap; }
+  .kpi b { display:block; font-size:20px; } .kpi span { color:var(--mute); font-size:12px; }
+  .q { border:1px solid var(--line); border-radius:10px; padding:10px; margin-bottom:8px; background:#fffdf5; }
+  .q .row { margin-top:6px; }
+  .grp { margin:14px 0 6px; font-weight:600; display:flex; justify-content:space-between; }
+  .item { display:grid; grid-template-columns:56px 1fr auto; gap:10px; padding:10px 0; border-top:1px solid var(--line); }
+  .item img { width:56px; height:72px; object-fit:cover; border-radius:6px; border:1px solid var(--line); background:var(--grey-bg); }
+  .amt { text-align:right; white-space:nowrap; } .amt small { color:var(--mute); display:block; }
+  .why { grid-column:2 / 4; font-size:13px; color:#344054; background:var(--grey-bg); border-radius:8px; padding:8px 10px; display:none; }
+  .why.open { display:block; } .why blockquote { margin:6px 0 0; padding-left:8px; border-left:3px solid #98a2b3; color:#475467; }
+  .linkbtn { background:none; border:0; color:var(--brand); cursor:pointer; padding:0; font:inherit; }
+  .muted { color:var(--mute); } .excl .item { opacity:.8; }
+  .banner { padding:10px 12px; border-radius:10px; margin-bottom:10px; }
+  .banner.ok { background:var(--ok-bg); color:var(--ok); } .banner.err { background:var(--bad-bg); color:var(--bad); }
+  table { border-collapse:collapse; width:100%; } th,td { text-align:left; padding:6px 8px; border-bottom:1px solid var(--line); vertical-align:top; }
+  th { color:var(--mute); font-weight:500; font-size:12px; }
+  textarea.doc { width:100%; height:300px; font:12.5px/1.5 ui-monospace,Menlo,monospace; }
+  .hidden { display:none !important; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Expense &amp; Reimbursement Agent</h1>
+  <span class="who" id="who"></span>
+  <nav role="tablist" aria-label="Sections">
+    <button role="tab" data-tab="claim" aria-selected="true">Claim</button>
+    <button role="tab" data-tab="policy" aria-selected="false">Policy (AI-interpreted)</button>
+    <button role="tab" data-tab="finance" aria-selected="false">Finance system</button>
+  </nav>
+</header>
+
+<main id="tab-claim">
+  <section class="card" id="chat" aria-label="Assistant chat">
+    <h2>Assistant</h2>
+    <div id="msgs" aria-live="polite"></div>
+    <div class="chips" id="chips"></div>
+    <form id="chatform"><input id="chatin" aria-label="Message the assistant" placeholder="Ask about your claim…" autocomplete="off"><button class="primary" id="chatsend">Send</button></form>
+  </section>
+  <section id="claimcol"></section>
+</main>
+
+<main id="tab-policy" class="hidden" style="grid-template-columns:1fr 1fr"></main>
+<main id="tab-finance" class="hidden" style="grid-template-columns:1fr"></main>
+
+<script>
+"use strict";
+const $ = (s, r=document) => r.querySelector(s);
+const state = { sid:null, snap:null, policy:null, poll:null, openWhy:new Set(), busy:false };
+
+function el(tag, attrs={}, ...kids) {
+  const e = document.createElement(tag);
+  for (const [k,v] of Object.entries(attrs)) {
+    if (v == null || v === false) continue;
+    if (k === "class") e.className = v;
+    else if (k.startsWith("on")) e.addEventListener(k.slice(2), v);
+    else if (k === "html") throw new Error("no innerHTML");
+    else e.setAttribute(k, v === true ? "" : v);
+  }
+  for (const c of kids.flat()) if (c != null && c !== false) e.append(c.nodeType ? c : document.createTextNode(String(c)));
+  return e;
+}
+const inr = n => n == null ? "—" : "₹" + Number(n).toLocaleString("en-IN", { maximumFractionDigits: 2 });
+const STATUS = { complete:"Complete", missing_info:"Needs info", questionable:"Needs review", duplicate:"Duplicate", ineligible:"Not reimbursable" };
+const STATE = { ready:"Ready to submit", needs_input:"Needs your input", blocked:"Nothing claimable" };
+const docCode = n => n.replace(/\.md$/,"").split("_").map(w => w[0]).join("").toUpperCase();
+
+async function api(path, opts={}) {
+  const r = await fetch(path, opts);
+  const body = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(body.detail || `Request failed (${r.status})`);
+  return body;
+}
+const post = (p, b) => api(p, { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify(b ?? {}) });
+
+/* ------------------------------ session ------------------------------ */
+async function init() {
+  state.snap = await api("/api/sessions", { method:"POST" });
+  state.sid = state.snap.id;
+  $("#who").textContent = `${state.snap.employee.name} · grade ${state.snap.employee.grade} · ${state.snap.employee.role}`;
+  say("bot", "Hi! Drop in your bills (photos or PDFs) and I'll build the claim, check it against the policy, and ask only what I can't work out myself.");
+  renderChips(); render();
+}
+function setSnap(s) { state.snap = s; render(); }
+function startPolling() {
+  clearInterval(state.poll);
+  state.poll = setInterval(async () => {
+    try { const s = await api(`/api/sessions/${state.sid}`); setSnap(s);
+      if (s.status !== "processing") { clearInterval(state.poll); if (s.status === "ready") onReady(s); } }
+    catch (e) { clearInterval(state.poll); banner(e.message, true); }
+  }, 700);
+}
+function onReady(s) {
+  const c = s.claim; if (!c) return;
+  say("bot", `Done. ${c.items.length} receipts read. ${c.counts.duplicate || 0} duplicate(s) and ${c.counts.ineligible || 0} not reimbursable were left out. ` +
+    (c.questions.length ? `I need ${c.questions.length} thing(s) from you — they're listed on the right.` : "Nothing else needed — you can submit."));
+}
+async function upload(files) {
+  if (!files.length) return;
+  const fd = new FormData(); for (const f of files) fd.append("files", f);
+  try { setSnap(await api(`/api/sessions/${state.sid}/receipts`, { method:"POST", body: fd })); startPolling(); }
+  catch (e) { banner(e.message, true); }
+}
+async function loadDemo() {
+  try { setSnap(await post(`/api/sessions/${state.sid}/demo`)); startPolling(); } catch (e) { banner(e.message, true); }
+}
+async function answer(kind, target, value) {
+  try { setSnap(await post(`/api/sessions/${state.sid}/answers`, { kind, target, value })); }
+  catch (e) { banner(e.message, true); throw e; }
+}
+async function submit() {
+  try { const r = await post(`/api/sessions/${state.sid}/submit`); setSnap(r.session);
+    say("bot", `Submitted to the finance system as ${r.submission.id}. Eligible reimbursement: ${inr(r.submission.eligible_inr)}.`); }
+  catch (e) { banner(e.message, true); }
+}
+function banner(text, err) {
+  const b = el("div", { class:"banner " + (err ? "err" : "ok"), role:"alert" }, text);
+  $("#claimcol").prepend(b); setTimeout(() => b.remove(), 6000);
+}
+
+/* ------------------------------ chat ------------------------------ */
+const rich = t => String(t).split("**").map((p, i) => i % 2 ? el("b", {}, p) : p);  // **bold** only; no HTML
+function say(who, text) {
+  const b = el("div", { class:"bub " + who }, who === "bot" ? rich(text) : text);
+  $("#msgs").append(b); $("#msgs").scrollTop = 1e9; return b;
+}
+function renderChips() {
+  const box = $("#chips"); box.replaceChildren();
+  for (const t of ["What's still missing?", "Why was my hotel reduced?", "What's the meal limit?", "Which bills were left out?"])
+    box.append(el("button", { type:"button", onclick:() => sendChat(t) }, t));
+}
+async function sendChat(text) {
+  if (!text.trim() || state.busy) return;
+  if (!state.snap.claim) { say("bot", "Upload some receipts first and then I can help with the claim."); return; }
+  state.busy = true; $("#chatsend").disabled = true;
+  say("user", text); const wait = say("bot", "…");
+  try { const r = await post(`/api/sessions/${state.sid}/chat`, { message: text }); wait.replaceChildren(...rich(r.reply)); setSnap(r.session); }
+  catch (e) { wait.textContent = "Sorry — " + e.message; }
+  finally { state.busy = false; $("#chatsend").disabled = false; }
+}
+$("#chatform").addEventListener("submit", e => { e.preventDefault(); const v = $("#chatin").value; $("#chatin").value = ""; sendChat(v); });
+
+/* ------------------------------ claim view ------------------------------ */
+function render() {
+  const s = state.snap, col = $("#claimcol"), keep = [...col.querySelectorAll(".banner")];
+  col.replaceChildren(...keep, uploader(s));
+  if (s.status === "processing") col.append(progress(s));
+  if (s.status === "error") col.append(el("div", { class:"banner err" }, "Processing failed: " + s.error));
+  if (s.claim) col.append(summary(s), questions(s), items(s));
+}
+function uploader(s) {
+  const input = el("input", { type:"file", multiple:true, accept:"image/*,.pdf", class:"hidden", "aria-label":"Choose receipt files", onchange:e => upload([...e.target.files]) });
+  const zone = el("div", { class:"drop", tabindex:"0", role:"button", "aria-label":"Drop receipts here or press Enter to choose files",
+    onclick:() => input.click(), onkeydown:e => { if (e.key === "Enter" || e.key === " ") input.click(); },
+    ondragover:e => { e.preventDefault(); zone.classList.add("over"); }, ondragleave:() => zone.classList.remove("over"),
+    ondrop:e => { e.preventDefault(); zone.classList.remove("over"); upload([...e.dataTransfer.files]); } },
+    el("strong", {}, s.submitted_ref ? "Claim submitted" : "Drop receipts here"), el("div", { class:"muted" }, "photos or PDFs · or click to choose"), input);
+  const demo = el("button", { class:"ghost", type:"button", onclick:loadDemo, disabled: s.status === "processing" || !!s.submitted_ref }, "Try with the demo receipts (24 synthetic bills)");
+  return el("div", { class:"card", style:"margin-bottom:12px" }, zone, el("div", { style:"margin-top:8px" }, demo));
+}
+function progress(s) {
+  const { done, total } = s.progress, pct = total ? Math.round(100 * done / total) : 0;
+  return el("div", { class:"card", style:"margin-bottom:12px", "aria-live":"polite" },
+    el("div", {}, `Reading and checking receipts… ${done}/${total}`), el("div", { class:"bar" }, el("i", { style:`width:${pct}%` })));
+}
+function summary(s) {
+  const c = s.claim, kpi = (v, l) => el("div", { class:"kpi" }, el("b", {}, v), el("span", {}, l));
+  const canSubmit = c.state === "ready" && !s.submitted_ref && s.status !== "processing";
+  return el("div", { class:"card", style:"margin-bottom:12px" },
+    el("div", { class:"row" },
+      el("span", { class:"chip " + c.state }, s.submitted_ref ? "Submitted · " + s.submitted_ref : STATE[c.state]),
+      el("div", { class:"kpis grow" }, kpi(inr(c.claimed_inr), "on the bills"), kpi(inr(c.eligible_inr), "reimbursable under policy"),
+        kpi(c.questions.length, "open question(s)")),
+      el("button", { class:"primary", disabled:!canSubmit, onclick:submit }, "Submit claim")),
+    el("div", { class:"muted", style:"margin-top:6px" }, Object.entries(c.counts).map(([k, v]) => `${v} ${STATUS[k] || k}`).join(" · ")));
+}
+function questions(s) {
+  const qs = s.claim.questions; if (!qs.length || s.submitted_ref) return el("span");
+  return el("div", { class:"card", style:"margin-bottom:12px" }, el("h2", {}, `I need ${qs.length} thing(s) from you`), qs.map(q => questionRow(q, s)));
+}
+function questionRow(q, s) {
+  const inputs = [];
+  const mk = (kind, type, ph, opts) => { const i = opts ? el("select", { "aria-label": ph }, el("option", { value:"" }, ph), opts.map(o => el("option", { value:o }, o)))
+    : el("input", { type, placeholder:ph, "aria-label":ph, size: type === "text" ? 34 : 14 }); inputs.push([kind, i]); return i; };
+  let widgets, target = q.target;
+  if (q.kind === "purpose") widgets = [mk("purpose_group", "text", "Business purpose, e.g. client visit in Pune")];
+  else if (q.kind === "justify") widgets = [mk("justification", "text", "Justification or approval reference")];
+  else if (q.kind === "clarify") widgets = [mk("category", "text", "Choose a category", q.options)];
+  else if (q.kind === "field") widgets = q.fields.map(f => ({ date:() => mk("date", "date", "Date"), vendor:() => mk("vendor", "text", "Vendor"),
+      amount:() => mk("amount", "number", "Amount"), currency:() => mk("currency", "text", "Currency (3 letters)") }[f] || (() => mk(f, "text", f)))());
+  else widgets = [];
+  const go = el("button", { class:"primary", type:"button", onclick: async () => {
+      const vals = inputs.map(([k, i]) => [k, i.value.trim()]).filter(([, v]) => v);
+      if (q.kind === "confirm") vals.push(["confirm", "yes"]);
+      if (!vals.length) return;
+      go.disabled = true;
+      try { for (const [k, v] of vals) await answer(k, target, v); } catch { go.disabled = false; }
+    } }, q.kind === "confirm" ? "Yes, that's correct" : "Save");
+  return el("div", { class:"q" }, el("div", {}, q.text), el("div", { class:"row" }, widgets, go));
+}
+function items(s) {
+  const c = s.claim, byFile = Object.fromEntries(c.items.map(i => [i.file, i]));
+  const out = el("div", { class:"card" }, el("h2", {}, "Your claim"));
+  const grouped = new Set();
+  for (const g of c.groups) {
+    out.append(el("div", { class:"grp" }, el("span", {}, g.title), el("span", { class:"muted" }, inr(g.eligible_inr) + " reimbursable")));
+    for (const f of g.files) { grouped.add(f); out.append(itemRow(byFile[f], s)); }
+  }
+  const rest = c.items.filter(i => !grouped.has(i.file) && !["duplicate", "ineligible"].includes(i.status));
+  if (rest.length) { out.append(el("div", { class:"grp" }, "Needs a date before it can be grouped")); rest.forEach(i => out.append(itemRow(i, s))); }
+  const excl = c.items.filter(i => ["duplicate", "ineligible"].includes(i.status));
+  if (excl.length) { out.append(el("div", { class:"grp" }, "Left out of the claim")); const box = el("div", { class:"excl" }); excl.forEach(i => box.append(itemRow(i, s))); out.append(box); }
+  return out;
+}
+function itemRow(i, s) {
+  const r = s.receipts[i.file], left = ["duplicate", "ineligible"].includes(i.status);
+  const key = i.file, open = state.openWhy.has(key);
+  const why = el("div", { class:"why" + (open ? " open" : "") });
+  if (i.category_reasoning) why.append(el("div", {}, el("b", {}, "Why this category: "), i.category_reasoning));
+  if (i.decision) {
+    why.append(el("div", { style:"margin-top:4px" }, el("b", {}, "Policy decision: "), i.decision.explanation));
+    for (const c of i.decision.cites) why.append(el("blockquote", {}, `${c.ref} (${c.document}): "${c.quote}"`));
+    if (i.decision.needs.length) why.append(el("div", { style:"margin-top:4px" }, el("b", {}, "Needed: "), i.decision.needs.join(", ")));
+  }
+  for (const rs of i.reasons) if (!i.decision || rs !== i.decision.explanation) why.append(el("div", { class:"muted", style:"margin-top:4px" }, "• " + rs));
+  const ex = r && r.extracted.receipt;
+  if (ex) why.append(el("div", { class:"muted", style:"margin-top:6px" }, `Read from bill: ${ex.vendor || "?"}, ${ex.receipt_date || "no date"}, ${ex.total ?? "?"} ${ex.currency} · confidence vendor ${ex.confidence.vendor}, date ${ex.confidence.date}, total ${ex.confidence.total}`));
+  const toggle = el("button", { class:"linkbtn", type:"button", "aria-expanded":String(open), onclick:() => {
+      state.openWhy.has(key) ? state.openWhy.delete(key) : state.openWhy.add(key); why.classList.toggle("open"); toggle.setAttribute("aria-expanded", String(state.openWhy.has(key))); } }, "Why?");
+  return el("div", { class:"item" },
+    el("img", { src:r ? r.thumb : "", alt:`Receipt ${i.file}`, loading:"lazy" }),
+    el("div", {}, el("div", {}, el("b", {}, i.vendor || i.file), el("span", { class:"muted" }, "  " + (i.receipt_date || "no date"))),
+      el("div", { class:"row", style:"gap:6px;margin-top:3px" }, el("span", { class:"chip " + i.status }, STATUS[i.status]),
+        el("span", { class:"chip cat" }, i.category.replace(/_/g, " ") + (i.category_source === "employee" ? " · you" : " · AI")), toggle)),
+    el("div", { class:"amt" }, el("b", {}, left ? "—" : inr(i.eligible_inr)), el("small", {}, "bill " + inr(i.total_inr))),
+    why);
+}
+
+/* ------------------------------ policy tab ------------------------------ */
+async function loadPolicy() {
+  const root = $("#tab-policy"); root.replaceChildren(el("div", { class:"card" }, "Reading policy documents… (the AI interprets them the first time)"));
+  try { state.policy = await api("/api/policy"); renderPolicy(); }
+  catch (e) { root.replaceChildren(el("div", { class:"banner err" }, e.message)); }
+}
+function renderPolicy(msg) {
+  const root = $("#tab-policy"), p = state.policy;
+  p.documents.sort((a, b) => b.text.length - a.text.length);  // main policy first
+  const sel = el("select", { "aria-label":"Policy document", onchange:() => { ta.value = p.documents.find(d => d.name === sel.value).text; } }, p.documents.map(d => el("option", { value:d.name }, d.name)));
+  const ta = el("textarea", { class:"doc", "aria-label":"Policy text" }); ta.value = p.documents[0].text;
+  const status = el("div", { "aria-live":"polite", class:"muted", style:"margin-top:8px" }, msg || "");
+  const save = el("button", { class:"primary", type:"button", onclick: async () => {
+      save.disabled = true; status.textContent = "AI is re-reading the policy and re-checking your claim…";
+      const before = state.snap.claim && state.snap.claim.eligible_inr;
+      try { state.policy = await api(`/api/policy/${sel.value}`, { method:"PUT", headers:{ "Content-Type":"application/json" }, body:JSON.stringify({ text: ta.value }) });
+        state.snap = await api(`/api/sessions/${state.sid}`); render();
+        const after = state.snap.claim && state.snap.claim.eligible_inr;
+        renderPolicy(before != null ? `Policy updated. Reimbursable total: ${inr(before)} → ${inr(after)}. No code was changed.` : "Policy updated."); }
+      catch (e) { status.textContent = e.message; save.disabled = false; } } }, "Save & let the AI re-interpret");
+  const reset = el("button", { class:"ghost", type:"button", onclick: async () => { state.policy = await post("/api/policy/reset"); state.snap = await api(`/api/sessions/${state.sid}`); render(); renderPolicy("Original policy restored."); } }, "Reset to original");
+  const I = p.interpreted, doc = n => docCode(n);
+  const rows = [
+    ...I.limits.map(l => ["Limit", l.category, `${inr(l.amount)} ${l.unit.replace("_"," ")}${l.grades ? " · " + l.grades.join(",") : ""}`, l.over_limit_action.replace("_"," ") + (l.requires_approval ? " · prior approval" : ""), l]),
+    ...I.exclusions.map(x => ["Excluded", x.category, "never reimbursable", x.reason, x]),
+    ...I.age_rules.map(a => ["Rule", "all", `receipts ≤ ${a.max_age_days} days old`, "", a]),
+  ];
+  const table = el("table", {}, el("tr", {}, ["Type", "Category", "Constraint", "If exceeded", "Source clause"].map(h => el("th", {}, h))),
+    rows.map(([t, c, k, a, it]) => el("tr", {}, el("td", {}, t), el("td", {}, c), el("td", {}, k), el("td", {}, a), el("td", { title:it.quote }, `${doc(it.document)}-${it.clause}`))));
+  root.replaceChildren(
+    el("section", { class:"card" }, el("h2", {}, "Policy documents (edit me)"), el("div", { class:"muted", style:"margin-bottom:8px" }, "Change a limit in the text, save, and watch the claim update. The AI reads the document; no rules are coded."),
+      sel, ta, el("div", { class:"row", style:"margin-top:8px" }, save, reset), status),
+    el("section", { class:"card" }, el("h2", {}, "What the AI extracted"), el("div", { class:"muted", style:"margin-bottom:8px" }, `${I.limits.length} limits · ${I.entitlements.length} entitlements · ${I.categories.length} categories. Every item is checked against a verbatim quote (hover a clause).`), table));
+}
+
+/* ------------------------------ finance tab ------------------------------ */
+async function loadFinance() {
+  const root = $("#tab-finance");
+  try {
+    const rows = await api("/api/finance/claims");
+    root.replaceChildren(el("section", { class:"card" }, el("h2", {}, "Mock corporate reimbursement system — submitted claims"),
+      rows.length ? el("table", {}, el("tr", {}, ["Reference", "Submitted", "Employee", "Grade", "On bills", "Reimbursable", "Status"].map(h => el("th", {}, h))),
+        rows.map(r => el("tr", {}, el("td", {}, r.id), el("td", {}, r.created_at.replace("T", " ")), el("td", {}, r.employee_name), el("td", {}, r.grade), el("td", {}, inr(r.claimed_inr)), el("td", {}, inr(r.eligible_inr)), el("td", {}, r.status))))
+        : el("div", { class:"muted" }, "No claims submitted yet.")));
+  } catch (e) { root.replaceChildren(el("div", { class:"banner err" }, e.message)); }
+}
+
+/* ------------------------------ tabs ------------------------------ */
+for (const b of document.querySelectorAll("nav button")) b.addEventListener("click", () => {
+  document.querySelectorAll("nav button").forEach(x => x.setAttribute("aria-selected", String(x === b)));
+  for (const t of ["claim", "policy", "finance"]) $("#tab-" + t).classList.toggle("hidden", t !== b.dataset.tab);
+  if (b.dataset.tab === "policy") loadPolicy(); if (b.dataset.tab === "finance") loadFinance();
+});
+init().catch(e => { document.body.prepend(el("div", { class:"banner err" }, "Could not start: " + e.message)); });
+</script>
+</body>
+</html>
