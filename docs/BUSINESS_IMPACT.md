@@ -9,7 +9,7 @@ company data. Replace the assumptions with real figures to size the benefit for 
 | Metric | Result |
 |---|---|
 | Receipts turned into structured data (vendor, date, total, currency) | 24 / 24 correct, including blurry, crumpled, PDF and foreign-currency bills |
-| Bills mapped to the right policy category | 23 / 24 (the miss is a 4-person tasting menu the model called client entertainment, which is arguable) |
+| Bills mapped to the right policy category | 21 / 24 (88%) with `anthropic:claude-sonnet-5-5`; classification accuracy is LLM-dependent and varies by model |
 | Duplicates caught (exact copy and two re-photographed bills) | 3 / 3, no false alarms |
 | Bills left out automatically (expired, personal expense) | 3, each with the policy clause that excluded it |
 | Questions the employee had to answer | **5 for 24 receipts** (one date, two approvals/justifications, two business-purpose questions) |

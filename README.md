@@ -102,7 +102,7 @@ More diagrams (processing sequence, policy interpretation with the grounding loo
 | Metric | Result |
 |---|---|
 | Extraction: vendor, date, total, currency | 24 / 24 (blurry, crumpled, PDF, USD and SGD included) |
-| Category classification | 23 / 24 |
+| Category classification | 21 / 24 (88%; classification accuracy is LLM-dependent and varies by model) |
 | Duplicates found (exact + re-photographed) | 3 / 3, 0 false alarms |
 | Questions the employee must answer | 5 for 24 receipts |
 | Policy edit (hotel 5,000 -> 7,000) | Reimbursable INR 23,053 -> INR 26,549, no code change |

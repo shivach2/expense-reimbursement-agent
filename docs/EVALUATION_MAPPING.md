@@ -18,7 +18,7 @@ How this submission addresses each rule and evaluation criterion, with pointers 
 * **Grounding check on AI-extracted rules.** Each rule must carry a verbatim quote from its clause, and its number must appear in that quote, or it is returned to the model for correction. This turns an LLM reading of policy into something safe enough for money.
 * **Decisions that cite their sources.** Every outcome shows the clause reference, the exact quote, the arithmetic and what is still needed; the chat agent can search the policy and cite it.
 * **Minimum-question design.** 24 bills produce 5 questions (one purpose per trip, none for already-rejected bills, clarification only when it changes the outcome).
-* **Evidence-driven decisions.** Image hashing for duplicates was measured and rejected; classifier over-asking was found by running the system and fixed.
+* **Evidence-driven decisions.** Image hashing for duplicates was measured and rejected; classifier over-asking was found by running the system and fixed. Classification accuracy (21/24, 88%) is LLM-dependent and varies by model.
 * *Honest note:* the individual techniques (structured output, RAG, tool-using agent) are established; the novelty is their combination under a deterministic enforcement layer.
 
 ## 2. Technical complexity
@@ -38,7 +38,7 @@ How this submission addresses each rule and evaluation criterion, with pointers 
 
 ## 4. Testing and reliability
 * 133 offline unit, component, integration and API tests; **100% statement coverage** of the application package; all error branches exercised; LLM behaviour simulated with scripted fake models, including bad outputs.
-* Live evaluation against ground truth on 24 synthetic bills: extraction 24/24, classification 23/24, duplicates 3/3 (`docs/TEST_REPORT.md` section 6, `data/eval/`).
+* Live evaluation against ground truth on 24 synthetic bills: extraction 24/24, classification 21/24 (88%, LLM-dependent — varies by model), duplicates 3/3 (`docs/TEST_REPORT.md` section 6, `data/eval/`).
 * Reliability features tested: retry/no-retry rules, cache behaviour, failure isolation, restore of the previous policy after a failed edit, refusal to submit an incomplete claim, no double submission.
 * *Honest note:* coverage is statement coverage, not branch coverage; the UI JavaScript and the Docker image are verified manually or not at all (stated in the report); accuracy is measured on synthetic data only.
 

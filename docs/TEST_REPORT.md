@@ -9,7 +9,7 @@ All numbers below were measured on the final code (Python 3.14.7, pytest 9.1, py
 | Run time | about 4 seconds, **fully offline** (no LLM call, no network, no API key needed) |
 | Statement coverage of `backend/app` | **100%** (1,380 statements, 0 missed), enforced at >= 95% in CI |
 | Lint (`ruff`: pycodestyle, pyflakes, isort, bugbear, pyupgrade) | All checks passed |
-| Live LLM evaluation (24 synthetic receipts, ground truth) | extraction 24/24, classification 23/24, duplicates 3/3 (details in section 6) |
+| Live LLM evaluation (24 synthetic receipts, ground truth) | extraction 24/24, classification 21/24 (88%), duplicates 3/3 (details in section 6) |
 
 Reproduce:
 ```bash
@@ -95,7 +95,7 @@ Claude Sonnet 5.5, run on 12 Oct 2026 with `--today 2026-10-12`:
 | Metric | Result |
 |---|---|
 | Vendor, date, total, currency extracted correctly | 24/24 each (clean, photographed, blurry, crumpled, PDF, USD and SGD) |
-| Category matches ground truth | 23/24 (miss: a 4-person tasting menu classed as client entertainment, arguably correct) |
+| Category matches ground truth | 21/24 (88%) with `anthropic:claude-sonnet-5-5` — classification accuracy is LLM-dependent and varies by model |
 | Duplicates found (exact copy and two re-photographed bills) | 3/3, no false alarms |
 | Bills excluded by policy with clause (expired, personal) | 2/2 expected, plus the arguable tasting menu |
 | Questions asked | 5 for 24 bills |

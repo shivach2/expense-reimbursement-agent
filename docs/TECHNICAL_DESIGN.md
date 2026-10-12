@@ -273,7 +273,7 @@ references. It never decides: all numbers come from tool output produced by dete
 | Untrusted model text in the UI | DOM built with `textContent`; only `**bold**` rendered, as `<b>` nodes |
 
 ### 4.8 Measured results (24 synthetic receipts, Claude Sonnet 5.5)
-Extraction of vendor, date, total, currency: **24/24**. Category: **23/24** (the miss is an arguable 4-person tasting menu). Duplicates:
+Extraction of vendor, date, total, currency: **24/24**. Category: **21/24 (88%)** with `anthropic:claude-sonnet-5-5` — classification accuracy is LLM-dependent and varies by model. Duplicates:
 **3/3**, no false alarms. Questions asked: **5 for 24 bills**. Policy edit (hotel 5,000 → 7,000): reimbursable total INR 23,053 → INR 26,549 with no code
 change. Gemini 3.8 Flash (free tier) interpreted the policy identically; of 8 receipts attempted, 5 completed (all correct) and 3 hit HTTP 503 overload, so no
 full-set figure is claimed. Raw metrics: `data/eval/`.
