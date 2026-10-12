@@ -1,0 +1,33 @@
+{
+  "source_file": "r23_dup_taxi_photo.png",
+  "file_sha256": "6cd5234f84071d03767fed6155af288599191e0e9d950d49a2961f11262a0b4e",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "ZIPPY CABS",
+    "receipt_date": "2026-09-14",
+    "total": 640.0,
+    "tax": 0.0,
+    "currency": "INR",
+    "category": "taxi ride",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Ride #4821",
+        "amount": 640.0
+      }
+    ],
+    "receipt_number": "1878",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.97,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": "Receipt is slightly rotated. Card ending 1234. Tax shown as 0.00."
+  },
+  "total_inr": 640.0,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

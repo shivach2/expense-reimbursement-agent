@@ -1,0 +1,7 @@
+{
+  "category": "office_supplies",
+  "reasoning": "The bill is from a stationery shop and lists printer paper and a stapler, which are standard office supplies. The total is slightly above the line items, which is normal tax.",
+  "confidence": 0.97,
+  "needs_clarification": false,
+  "clarification_question": null
+}

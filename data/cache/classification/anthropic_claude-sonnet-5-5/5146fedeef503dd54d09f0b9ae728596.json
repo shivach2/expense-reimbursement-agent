@@ -1,0 +1,7 @@
+{
+  "category": "lodging",
+  "reasoning": "The bill is for one night's room stay at a hotel, which is lodging. Grade M2 is eligible for lodging, and the extra over the room charge (5800 vs 6496 total) is consistent with taxes.",
+  "confidence": 0.97,
+  "needs_clarification": false,
+  "clarification_question": null
+}

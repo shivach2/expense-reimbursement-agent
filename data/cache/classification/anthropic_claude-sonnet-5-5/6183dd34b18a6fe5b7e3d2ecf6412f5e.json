@@ -1,0 +1,7 @@
+{
+  "category": "lodging",
+  "reasoning": "The bill is from a hotel for a 1-night room stay with breakfast, so it is lodging. The breakfast is part of the hotel folio and does not change the category.",
+  "confidence": 0.93,
+  "needs_clarification": false,
+  "clarification_question": null
+}

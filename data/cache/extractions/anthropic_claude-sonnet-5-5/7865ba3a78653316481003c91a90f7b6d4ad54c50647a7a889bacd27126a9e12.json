@@ -1,0 +1,37 @@
+{
+  "source_file": "r24_pharmacy.png",
+  "file_sha256": "7865ba3a78653316481003c91a90f7b6d4ad54c50647a7a889bacd27126a9e12",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "CORNER PHARMACY",
+    "receipt_date": "2026-09-18",
+    "total": 448.0,
+    "tax": 48.0,
+    "currency": "INR",
+    "category": "pharmacy purchase",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Cough syrup",
+        "amount": 140.0
+      },
+      {
+        "description": "Vitamins",
+        "amount": 260.0
+      }
+    ],
+    "receipt_number": "1840",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": null
+  },
+  "total_inr": 448.0,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

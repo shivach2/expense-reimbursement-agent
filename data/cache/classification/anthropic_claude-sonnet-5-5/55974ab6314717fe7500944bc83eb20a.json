@@ -1,0 +1,7 @@
+{
+  "category": "meals",
+  "reasoning": "A cappuccino at a cafe is a food and beverage purchase, so it falls under Meals, which is available to your grade. The total above the line item is likely tax.",
+  "confidence": 0.9,
+  "needs_clarification": false,
+  "clarification_question": null
+}

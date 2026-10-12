@@ -1,0 +1,37 @@
+{
+  "source_file": "r06_blurry_lunch.png",
+  "file_sha256": "02c4c4127176a520bb90ce2a9aff433ecb3f5810d65ac1fbba6abb4eea07beb2",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "GREEN LEAF EATERY",
+    "receipt_date": "2026-09-16",
+    "total": 546.0,
+    "tax": 26.0,
+    "currency": "INR",
+    "category": "restaurant meal",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Bowl",
+        "amount": 380.0
+      },
+      {
+        "description": "Juice",
+        "amount": 140.0
+      }
+    ],
+    "receipt_number": "1980",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.95,
+      "date": 0.9,
+      "total": 0.95
+    },
+    "notes": "Image is slightly blurred and rotated. Card ending 1234. Subtotal 520.00 plus tax 26.00 equals 546.00."
+  },
+  "total_inr": 546.0,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

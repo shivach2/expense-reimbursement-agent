@@ -1,0 +1,7 @@
+{
+  "category": "local_transport",
+  "reasoning": "Zippy Cabs is a cab service and the bill is for a single taxi ride, which is local transport.",
+  "confidence": 0.96,
+  "needs_clarification": false,
+  "clarification_question": null
+}

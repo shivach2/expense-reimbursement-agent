@@ -1,0 +1,7 @@
+{
+  "category": "local_transport",
+  "reasoning": "This is a train ticket (AC chair car) from a rail operator, which is a travel/transport expense. Local transport is the closest available category and the employee's grade M2 is eligible for it.",
+  "confidence": 0.8,
+  "needs_clarification": false,
+  "clarification_question": null
+}

@@ -1,0 +1,7 @@
+{
+  "category": "personal_expenses",
+  "reasoning": "A cake from a bakery is not a meal, and nothing on the bill shows it was for a client. Without that, it looks like a personal or celebration purchase.",
+  "confidence": 0.4,
+  "needs_clarification": true,
+  "clarification_question": "Was this cake bought for a client (for example a client meeting or gift), or for a personal or internal team celebration?"
+}

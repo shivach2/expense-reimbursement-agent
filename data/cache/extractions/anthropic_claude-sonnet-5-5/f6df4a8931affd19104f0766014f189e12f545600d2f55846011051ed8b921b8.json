@@ -1,0 +1,33 @@
+{
+  "source_file": "r09_foreign_sgd.pdf",
+  "file_sha256": "f6df4a8931affd19104f0766014f189e12f545600d2f55846011051ed8b921b8",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "MARINA BAY TAXI",
+    "receipt_date": "2026-09-18",
+    "total": 34.88,
+    "tax": 2.88,
+    "currency": "SGD",
+    "category": "taxi ride",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Airport transfer",
+        "amount": 32.0
+      }
+    ],
+    "receipt_number": "9448",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.97,
+      "total": 0.98
+    },
+    "notes": null
+  },
+  "total_inr": 2162.56,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

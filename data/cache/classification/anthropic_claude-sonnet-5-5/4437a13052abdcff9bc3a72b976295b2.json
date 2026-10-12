@@ -1,0 +1,7 @@
+{
+  "category": "local_transport",
+  "reasoning": "Zippy Cabs is a taxi service and the bill is a single cab ride, which is local transport. Grade M2 is eligible for this category.",
+  "confidence": 0.97,
+  "needs_clarification": false,
+  "clarification_question": null
+}

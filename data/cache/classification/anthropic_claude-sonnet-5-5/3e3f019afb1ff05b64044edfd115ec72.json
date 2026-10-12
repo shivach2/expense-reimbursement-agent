@@ -1,0 +1,7 @@
+{
+  "category": "meals",
+  "reasoning": "The bill from Saffron Table is for a thali, lassi and dessert, which is a restaurant meal. The total of 787.50 is the 750 line-item subtotal plus 37.50 tax, so it fits the meals category, which is available to grade M2.",
+  "confidence": 0.93,
+  "needs_clarification": false,
+  "clarification_question": null
+}

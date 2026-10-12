@@ -1,0 +1,33 @@
+{
+  "source_file": "r15_train.png",
+  "file_sha256": "e9bc88d3752c11668f0c697713f15470a2900eb03765f9ac5baddc6f9a57f1f5",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "RAILLINK EXPRESS",
+    "receipt_date": "2026-09-22",
+    "total": 1312.5,
+    "tax": 62.5,
+    "currency": "INR",
+    "category": "train ticket",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Ticket AC chair",
+        "amount": 1250.0
+      }
+    ],
+    "receipt_number": "5142",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.97,
+      "date": 0.95,
+      "total": 0.97
+    },
+    "notes": "Receipt is photographed at a tilt. Card number is masked (****1234)."
+  },
+  "total_inr": 1312.5,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

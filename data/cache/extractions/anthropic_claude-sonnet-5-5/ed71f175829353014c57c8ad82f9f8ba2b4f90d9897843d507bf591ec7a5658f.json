@@ -1,0 +1,33 @@
+{
+  "source_file": "r13_parking.png",
+  "file_sha256": "ed71f175829353014c57c8ad82f9f8ba2b4f90d9897843d507bf591ec7a5658f",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "CITY PARK LOT",
+    "receipt_date": "2026-09-20",
+    "total": 120.0,
+    "tax": 0.0,
+    "currency": "INR",
+    "category": "parking",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Parking 3h",
+        "amount": 120.0
+      }
+    ],
+    "receipt_number": "6856",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.97,
+      "date": 0.96,
+      "total": 0.98
+    },
+    "notes": null
+  },
+  "total_inr": 120.0,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

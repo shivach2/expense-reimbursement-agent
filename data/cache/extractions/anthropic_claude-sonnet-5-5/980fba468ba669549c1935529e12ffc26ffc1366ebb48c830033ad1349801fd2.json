@@ -1,0 +1,33 @@
+{
+  "source_file": "r14_conf_fee.pdf",
+  "file_sha256": "980fba468ba669549c1935529e12ffc26ffc1366ebb48c830033ad1349801fd2",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "NOVATECH SUMMIT",
+    "receipt_date": "2026-09-21",
+    "total": 11210.0,
+    "tax": 1710.0,
+    "currency": "INR",
+    "category": "conference pass",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Conference pass",
+        "amount": 9500.0
+      }
+    ],
+    "receipt_number": "7961",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.97,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": "Receipt date 21/09/2026 is in the future relative to typical submission; verify. Card ending 1234."
+  },
+  "total_inr": 11210.0,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

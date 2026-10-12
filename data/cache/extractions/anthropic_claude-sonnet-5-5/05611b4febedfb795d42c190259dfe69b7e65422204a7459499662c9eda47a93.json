@@ -1,0 +1,41 @@
+{
+  "source_file": "r08_foreign_usd.png",
+  "file_sha256": "05611b4febedfb795d42c190259dfe69b7e65422204a7459499662c9eda47a93",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "HARBOR GRILL",
+    "receipt_date": "2026-09-18",
+    "total": 24.3,
+    "tax": 1.8,
+    "currency": "USD",
+    "category": "restaurant meal",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Burger",
+        "amount": 14.5
+      },
+      {
+        "description": "Fries",
+        "amount": 5.0
+      },
+      {
+        "description": "Soda",
+        "amount": 3.0
+      }
+    ],
+    "receipt_number": "9415",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": "Currency inferred from the $ symbol on the total line. Phone number appears to be a placeholder (000-000-0000). Card ending 1234."
+  },
+  "total_inr": 2016.9,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

@@ -1,0 +1,37 @@
+{
+  "source_file": "r05_stationery.png",
+  "file_sha256": "35c4c481a1411e271a9ee630936faa1ac54fbef8d4b4385295aeb72f61916ad3",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "PAPERWISE STORES",
+    "receipt_date": "2026-09-16",
+    "total": 424.8,
+    "tax": 64.8,
+    "currency": "INR",
+    "category": "stationery purchase",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Notebook x2",
+        "amount": 240.0
+      },
+      {
+        "description": "Pens",
+        "amount": 120.0
+      }
+    ],
+    "receipt_number": "3544",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": null
+  },
+  "total_inr": 424.8,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

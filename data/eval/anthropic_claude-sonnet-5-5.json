@@ -1,0 +1,26 @@
+{
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipts": 24,
+  "extraction_accuracy": {
+    "vendor": 1.0,
+    "date": 1.0,
+    "total": 1.0,
+    "currency": 1.0
+  },
+  "classification_accuracy": 0.875,
+  "duplicates_found": 3,
+  "duplicates_expected": 3,
+  "duplicate_false_alarms": 0,
+  "ineligible_found": 2,
+  "ineligible_expected": 2,
+  "claim_state": "needs_input",
+  "questions": 5,
+  "claimed_inr": 40212.38,
+  "eligible_inr": 23052.68,
+  "counts": {
+    "missing_info": 16,
+    "questionable": 2,
+    "ineligible": 3,
+    "duplicate": 3
+  }
+}

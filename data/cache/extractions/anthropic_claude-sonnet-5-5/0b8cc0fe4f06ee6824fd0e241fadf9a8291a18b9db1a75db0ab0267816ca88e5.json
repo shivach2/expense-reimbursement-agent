@@ -1,0 +1,37 @@
+{
+  "source_file": "r11_overlimit_meal.png",
+  "file_sha256": "0b8cc0fe4f06ee6824fd0e241fadf9a8291a18b9db1a75db0ab0267816ca88e5",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "GRAND TERRACE DINING",
+    "receipt_date": "2026-09-19",
+    "total": 12980.0,
+    "tax": 1980.0,
+    "currency": "INR",
+    "category": "restaurant meal",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Tasting menu x4",
+        "amount": 7200.0
+      },
+      {
+        "description": "Wine",
+        "amount": 3800.0
+      }
+    ],
+    "receipt_number": "1937",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.97,
+      "date": 0.95,
+      "total": 0.97
+    },
+    "notes": "Receipt date is 19/09/2026, which may be a future date depending on when it is submitted. The photo is slightly rotated. Card number is masked (****1234). Subtotal 11000 plus tax 1980 equals total 12980."
+  },
+  "total_inr": 12980.0,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

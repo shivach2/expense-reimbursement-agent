@@ -1,0 +1,33 @@
+{
+  "source_file": "r12_old_receipt.png",
+  "file_sha256": "687f08c127aaeaa4b4e727aef3e30f4044e6c522c8505fbfbb49360a7e40b436",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "SUNRISE BAKERY",
+    "receipt_date": "2026-03-02",
+    "total": 682.5,
+    "tax": 32.5,
+    "currency": "INR",
+    "category": "bakery purchase",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Cake",
+        "amount": 650.0
+      }
+    ],
+    "receipt_number": "6518",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": null
+  },
+  "total_inr": 682.5,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

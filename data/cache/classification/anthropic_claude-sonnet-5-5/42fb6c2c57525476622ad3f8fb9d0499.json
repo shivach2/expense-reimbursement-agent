@@ -1,0 +1,7 @@
+{
+  "category": "local_transport",
+  "reasoning": "A 3-hour parking charge at a city parking lot is a local travel cost. Of the listed categories, local transport fits best.",
+  "confidence": 0.8,
+  "needs_clarification": false,
+  "clarification_question": null
+}

@@ -1,0 +1,33 @@
+{
+  "source_file": "r20_coffee2.png",
+  "file_sha256": "ea9e9a35502c4d4babfc168e171b49cf2183d9bbe6c29c0a8c66db866aad3a5a",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "BLUEBIRD CAFE",
+    "receipt_date": "2026-09-24",
+    "total": 168.0,
+    "tax": 8.0,
+    "currency": "INR",
+    "category": "cafe purchase (coffee)",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Cappuccino",
+        "amount": 160.0
+      }
+    ],
+    "receipt_number": "6024",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": null
+  },
+  "total_inr": 168.0,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

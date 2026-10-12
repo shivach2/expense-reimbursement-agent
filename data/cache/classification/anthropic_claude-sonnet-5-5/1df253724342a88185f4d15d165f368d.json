@@ -1,0 +1,7 @@
+{
+  "category": "medical",
+  "reasoning": "The bill is from a pharmacy for cough syrup and vitamins, which are health-related purchases. Medical expenses are the closest fit, and the policy treats them as not reimbursable.",
+  "confidence": 0.95,
+  "needs_clarification": false,
+  "clarification_question": null
+}

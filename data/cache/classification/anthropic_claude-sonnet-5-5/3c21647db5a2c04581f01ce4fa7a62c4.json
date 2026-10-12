@@ -1,0 +1,7 @@
+{
+  "category": "local_transport",
+  "reasoning": "A taxi ride from a cab vendor is local transport, which is available to grade M2.",
+  "confidence": 0.97,
+  "needs_clarification": false,
+  "clarification_question": null
+}

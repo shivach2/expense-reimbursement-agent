@@ -1,0 +1,33 @@
+{
+  "source_file": "r07_crumpled_fuel.png",
+  "file_sha256": "a41dc26c61209c6123867b5ff433f261c37c23b9edc711118cd9e55737af60c1",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "HIGHWAY FUEL POINT",
+    "receipt_date": "2026-09-17",
+    "total": 2100.0,
+    "tax": 0.0,
+    "currency": "INR",
+    "category": "petrol",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Petrol 20L",
+        "amount": 2100.0
+      }
+    ],
+    "receipt_number": "9442",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.97,
+      "date": 0.93,
+      "total": 0.97
+    },
+    "notes": "Receipt is photographed at an angle with some stray lines overlapping text. Date is in the future relative to typical usage (17/09/2026), so a human may want to verify it. Card ending 1234."
+  },
+  "total_inr": 2100.0,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

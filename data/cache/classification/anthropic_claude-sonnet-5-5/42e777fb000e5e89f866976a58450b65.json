@@ -1,0 +1,7 @@
+{
+  "category": "client_entertainment",
+  "reasoning": "This is a fine-dining receipt for four tasting menus plus wine, which looks more like hosting a group than a personal meal for one. Client entertainment and meals can have different limits, so the category matters.",
+  "confidence": 0.6,
+  "needs_clarification": true,
+  "clarification_question": "Were any of the four diners external clients or customers, or was this an internal team meal?"
+}

@@ -1,0 +1,7 @@
+{
+  "category": "meals",
+  "reasoning": "The bill is from a restaurant and lists a thali, a lassi and a dessert, which are food and drink for a meal. Meals is available to your grade, so it fits.",
+  "confidence": 0.93,
+  "needs_clarification": false,
+  "clarification_question": null
+}

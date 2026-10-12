@@ -1,0 +1,41 @@
+{
+  "source_file": "r21_dup_exact_cafe.png",
+  "file_sha256": "2ef53ebf27cb60f0c013dd16edd7b21167631abc362b069a83dcd5c733e3dc85",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "BLUEBIRD CAFE",
+    "receipt_date": "2026-09-14",
+    "total": 430.5,
+    "tax": 20.5,
+    "currency": "INR",
+    "category": "cafe meal",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Filter Coffee",
+        "amount": 90.0
+      },
+      {
+        "description": "Sandwich",
+        "amount": 220.0
+      },
+      {
+        "description": "Muffin",
+        "amount": 100.0
+      }
+    ],
+    "receipt_number": "9896",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": null
+  },
+  "total_inr": 430.5,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

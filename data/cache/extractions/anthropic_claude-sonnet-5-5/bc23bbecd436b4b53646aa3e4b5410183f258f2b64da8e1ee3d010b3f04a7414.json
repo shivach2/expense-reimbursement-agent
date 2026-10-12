@@ -1,0 +1,33 @@
+{
+  "source_file": "r16_internet.pdf",
+  "file_sha256": "bc23bbecd436b4b53646aa3e4b5410183f258f2b64da8e1ee3d010b3f04a7414",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "SWIFTNET BROADBAND",
+    "receipt_date": "2026-09-01",
+    "total": 1178.82,
+    "tax": 179.82,
+    "currency": "INR",
+    "category": "broadband internet monthly plan",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Monthly plan",
+        "amount": 999.0
+      }
+    ],
+    "receipt_number": "9281",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": null
+  },
+  "total_inr": 1178.82,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

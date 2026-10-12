@@ -1,0 +1,41 @@
+{
+  "source_file": "r22_dup_photo_dinner.png",
+  "file_sha256": "bc99699b05d1cb3894e4c1984a7cd3f12f047f1011f31909c885aafa0c151c74",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "SAFFRON TABLE",
+    "receipt_date": "2026-09-15",
+    "total": 787.5,
+    "tax": 37.5,
+    "currency": "INR",
+    "category": "restaurant meal",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Thali",
+        "amount": 450.0
+      },
+      {
+        "description": "Lassi",
+        "amount": 120.0
+      },
+      {
+        "description": "Dessert",
+        "amount": 180.0
+      }
+    ],
+    "receipt_number": "2066",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.97,
+      "date": 0.95,
+      "total": 0.97
+    },
+    "notes": "Receipt photographed at an angle. Date 15/09/2026 is in the future relative to typical submission and may be worth checking. Subtotal 750.00 + tax 37.50 = 787.50, which matches the total."
+  },
+  "total_inr": 787.5,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}

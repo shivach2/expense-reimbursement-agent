@@ -1,0 +1,39 @@
+{
+  "source_file": "r10_missing_date.png",
+  "file_sha256": "85ebe59344198bd66afe67f95315581e9c0c115a230088305ab9f11df66a24cf",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "CORNER STATIONERS",
+    "receipt_date": null,
+    "total": 268.8,
+    "tax": 28.8,
+    "currency": "INR",
+    "category": "stationery purchase",
+    "nights": null,
+    "line_items": [
+      {
+        "description": "Printer paper",
+        "amount": 150.0
+      },
+      {
+        "description": "Stapler",
+        "amount": 90.0
+      }
+    ],
+    "receipt_number": "3973",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.0,
+      "total": 0.98
+    },
+    "notes": "No date visible on the receipt. Card ending 1234."
+  },
+  "total_inr": 268.8,
+  "needs_review": true,
+  "review_reasons": [
+    "Date missing"
+  ],
+  "error": null
+}

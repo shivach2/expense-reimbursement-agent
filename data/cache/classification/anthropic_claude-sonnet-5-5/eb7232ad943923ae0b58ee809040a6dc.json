@@ -1,0 +1,7 @@
+{
+  "category": "meals",
+  "reasoning": "The bill from Harbor Grill is for a burger, fries and a soda, which is a restaurant meal. The total of 24.3 is the line items (22.5) plus tax, so it fits the Meals category, which is available to your grade.",
+  "confidence": 0.93,
+  "needs_clarification": false,
+  "clarification_question": null
+}

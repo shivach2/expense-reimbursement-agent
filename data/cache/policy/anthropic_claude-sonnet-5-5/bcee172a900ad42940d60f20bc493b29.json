@@ -1,0 +1,215 @@
+{
+  "categories": [
+    {
+      "id": "meals",
+      "label": "Meals",
+      "description": "Meal expenses claimable by eligible grades"
+    },
+    {
+      "id": "local_transport",
+      "label": "Local transport",
+      "description": "Local transport expenses claimable by eligible grades"
+    },
+    {
+      "id": "fuel",
+      "label": "Fuel",
+      "description": "Fuel expenses claimable by eligible grades"
+    },
+    {
+      "id": "communication",
+      "label": "Communication",
+      "description": "Mobile and broadband bills"
+    },
+    {
+      "id": "office_supplies",
+      "label": "Office supplies",
+      "description": "Office supplies claimable by eligible grades"
+    },
+    {
+      "id": "training",
+      "label": "Training",
+      "description": "Training expenses claimable by eligible grades"
+    },
+    {
+      "id": "lodging",
+      "label": "Lodging",
+      "description": "Lodging expenses claimable by Manager and Director grades"
+    },
+    {
+      "id": "client_entertainment",
+      "label": "Client entertainment",
+      "description": "Client entertainment expenses claimable by Manager and Director grades"
+    }
+  ],
+  "entitlements": [
+    {
+      "clause": "2.1",
+      "quote": "Executive grades are eligible to claim meals, local transport, fuel, communication, office supplies and training.",
+      "document": "grade_entitlements.md",
+      "category": "meals",
+      "grades": [
+        "E1",
+        "E2",
+        "E3",
+        "M1",
+        "M2",
+        "M3",
+        "D1",
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "clause": "2.1",
+      "quote": "Executive grades are eligible to claim meals, local transport, fuel, communication, office supplies and training.",
+      "document": "grade_entitlements.md",
+      "category": "local_transport",
+      "grades": [
+        "E1",
+        "E2",
+        "E3",
+        "M1",
+        "M2",
+        "M3",
+        "D1",
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "clause": "2.1",
+      "quote": "Executive grades are eligible to claim meals, local transport, fuel, communication, office supplies and training.",
+      "document": "grade_entitlements.md",
+      "category": "fuel",
+      "grades": [
+        "E1",
+        "E2",
+        "E3",
+        "M1",
+        "M2",
+        "M3",
+        "D1",
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "clause": "2.1",
+      "quote": "Executive grades are eligible to claim meals, local transport, fuel, communication, office supplies and training.",
+      "document": "grade_entitlements.md",
+      "category": "communication",
+      "grades": [
+        "E1",
+        "E2",
+        "E3",
+        "M1",
+        "M2",
+        "M3",
+        "D1",
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "clause": "2.1",
+      "quote": "Executive grades are eligible to claim meals, local transport, fuel, communication, office supplies and training.",
+      "document": "grade_entitlements.md",
+      "category": "office_supplies",
+      "grades": [
+        "E1",
+        "E2",
+        "E3",
+        "M1",
+        "M2",
+        "M3",
+        "D1",
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "clause": "2.1",
+      "quote": "Executive grades are eligible to claim meals, local transport, fuel, communication, office supplies and training.",
+      "document": "grade_entitlements.md",
+      "category": "training",
+      "grades": [
+        "E1",
+        "E2",
+        "E3",
+        "M1",
+        "M2",
+        "M3",
+        "D1",
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "clause": "2.2",
+      "quote": "additionally lodging and client entertainment",
+      "document": "grade_entitlements.md",
+      "category": "lodging",
+      "grades": [
+        "M1",
+        "M2",
+        "M3",
+        "D1",
+        "D2",
+        "D3"
+      ]
+    },
+    {
+      "clause": "2.2",
+      "quote": "additionally lodging and client entertainment",
+      "document": "grade_entitlements.md",
+      "category": "client_entertainment",
+      "grades": [
+        "M1",
+        "M2",
+        "M3",
+        "D1",
+        "D2",
+        "D3"
+      ]
+    }
+  ],
+  "limits": [
+    {
+      "clause": "3.1",
+      "quote": "Mobile and broadband bills are reimbursable up to INR 800 per month for Executive grades.",
+      "document": "grade_entitlements.md",
+      "category": "communication",
+      "amount": 800.0,
+      "currency": "INR",
+      "unit": "per_month",
+      "grades": [
+        "E1",
+        "E2",
+        "E3"
+      ],
+      "over_limit_action": "partial",
+      "requires_approval": false
+    },
+    {
+      "clause": "3.2",
+      "quote": "Mobile and broadband bills are reimbursable up to INR 1,200 per month for Manager and Director grades.",
+      "document": "grade_entitlements.md",
+      "category": "communication",
+      "amount": 1200.0,
+      "currency": "INR",
+      "unit": "per_month",
+      "grades": [
+        "M1",
+        "M2",
+        "M3",
+        "D1",
+        "D2",
+        "D3"
+      ],
+      "over_limit_action": "partial",
+      "requires_approval": false
+    }
+  ],
+  "exclusions": [],
+  "age_rules": []
+}

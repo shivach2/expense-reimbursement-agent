@@ -11,9 +11,8 @@ Change one sentence in a policy document and the next claim uses the new rule, w
 
 | | |
 |---|---|
-| **Demo video (YouTube)** | YOUR_YOUTUBE_URL |
-| **Hosted demo (optional)** | YOUR_HOSTED_URL (or "not hosted") |
-| **Team / author** | YOUR_NAME |
+| **Demo video (YouTube)** | https://youtu.be/cBqzs7ioSiY |
+| **Team / author** | shivaprasad.c@ril.com |
 
 ## Documentation
 | Document | What it contains |
@@ -23,7 +22,7 @@ Change one sentence in a policy document and the next claim uses the new rule, w
 | [docs/TEST_REPORT.md](docs/TEST_REPORT.md) | 133 tests, 100% coverage, strategy, live-LLM evaluation, defects found and fixed, honest limits |
 | [docs/EVALUATION_MAPPING.md](docs/EVALUATION_MAPPING.md) | How each rule and evaluation criterion is addressed |
 | [docs/BUSINESS_IMPACT.md](docs/BUSINESS_IMPACT.md) | Measured results and an assumption-based time-saving model |
-| [docs/DEMO_VIDEO_GUIDE.md](docs/DEMO_VIDEO_GUIDE.md), [docs/SUBMISSION_CHECKLIST.md](docs/SUBMISSION_CHECKLIST.md) | Video script and upload steps; GitHub and submission steps |
+
 
 ![Claim and chat](docs/screenshots/01_claim_and_chat.jpg)
 

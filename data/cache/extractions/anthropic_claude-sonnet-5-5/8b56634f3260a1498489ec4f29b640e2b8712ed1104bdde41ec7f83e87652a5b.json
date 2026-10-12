@@ -1,0 +1,33 @@
+{
+  "source_file": "r19_hotel2.png",
+  "file_sha256": "8b56634f3260a1498489ec4f29b640e2b8712ed1104bdde41ec7f83e87652a5b",
+  "model": "anthropic:claude-sonnet-5-5",
+  "receipt": {
+    "readable": true,
+    "vendor": "LOTUS GROVE HOTEL",
+    "receipt_date": "2026-09-23",
+    "total": 6496.0,
+    "tax": 696.0,
+    "currency": "INR",
+    "category": "hotel stay",
+    "nights": 1,
+    "line_items": [
+      {
+        "description": "Room 1 night",
+        "amount": 5800.0
+      }
+    ],
+    "receipt_number": "1643",
+    "payment_method": "CARD",
+    "confidence": {
+      "vendor": 0.98,
+      "date": 0.95,
+      "total": 0.98
+    },
+    "notes": null
+  },
+  "total_inr": 6496.0,
+  "needs_review": false,
+  "review_reasons": [],
+  "error": null
+}
