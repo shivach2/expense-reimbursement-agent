@@ -29,3 +29,13 @@ backend/uploads/
 backend/runtime/
 
 submission/
+
+# Local build instructions and generated files
+/build/
+/rebuild_prompt/
+/.agents/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+~$*
